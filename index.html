@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WebGIS Bidang Tanah</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>WebGIS Bidang Tanah</h1>
+    <div class="actions">
+      <button id="btnGeojson" title="Unduh data yang tampil sebagai GeoJSON">Ekspor GeoJSON</button>
+      <button id="btnCsv" title="Unduh data yang tampil sebagai CSV">Ekspor CSV</button>
+      <button id="btnPrint">Cetak Peta</button>
+      <button id="btnLogin">Login Admin</button>
+      <button id="btnLogout" hidden>Keluar</button>
+    </div>
+  </header>
+
+  <main>
+    <aside id="panel">
+      <input id="q" type="search" placeholder="Cari NIB atau nama pemilik…" autocomplete="off">
+      <select id="fStatus"><option value="">Semua status</option></select>
+      <div id="count" class="muted">Memuat data…</div>
+      <ul id="results"></ul>
+      <p class="muted admin-only">Mode admin aktif: gunakan tombol gambar poligon di kiri atas peta untuk menambah bidang baru, atau klik bidang lalu pilih Edit.</p>
+    </aside>
+    <div id="map"></div>
+  </main>
+
+  <dialog id="loginDlg">
+    <form id="loginForm" method="dialog">
+      <h2>Login Admin</h2>
+      <label>Email <input id="email" type="email" required autocomplete="username"></label>
+      <label>Kata sandi <input id="password" type="password" required autocomplete="current-password"></label>
+      <p id="loginErr" class="err"></p>
+      <div class="row">
+        <button type="button" id="loginCancel">Batal</button>
+        <button type="submit" class="primary">Masuk</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="formDlg">
+    <form id="parcelForm" method="dialog">
+      <h2 id="formTitle">Data Bidang</h2>
+      <label>NIB <input id="fNib" required maxlength="40"></label>
+      <label>Nama pemilik <input id="fNama" required maxlength="120"></label>
+      <label>Luas (m²) <input id="fLuas" type="number" step="0.01" min="0" required></label>
+      <label>Status kepemilikan <select id="fStat" required></select></label>
+      <p id="formErr" class="err"></p>
+      <div class="row">
+        <button type="button" id="formCancel">Batal</button>
+        <button type="submit" class="primary">Simpan</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
