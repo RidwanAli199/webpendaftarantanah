@@ -1,7 +1,7 @@
 // Isi dengan konfigurasi dari Firebase Console:
 // Project settings (ikon roda gigi) > General > Your apps > Web app > SDK setup and configuration.
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
+export const firebaseConfig = {
   apiKey: "AIzaSyDpk65EBWIzwzowYVX8u7-thtL4b5MTa3U",
   authDomain: "pendaftarantanah-c297e.firebaseapp.com",
   projectId: "pendaftarantanah-c297e",
